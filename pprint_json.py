@@ -3,16 +3,18 @@ import requests
 
 
 def load_data(filepath):
-     f = requests.get(filepath)
-     return f.json()
+    get_file = requests.get(filepath)
+    return get_file.json()
 
 
-def pretty_print_json(data):
-    return print(json.dumps(data, skipkeys=True, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
+def pretty_print_json(json_file):
+    return print(json.dumps(json_file, skipkeys=True, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
 
 if __name__ == '__main__':
-    f = input()
-    c = load_data(f)
-    b = pretty_print_json(c)
+    file_input = input()
+    load_file = load_data(file_input)
+    print_file = pretty_print_json(load_file)
+
+
