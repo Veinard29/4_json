@@ -1,20 +1,1 @@
-import json
-import requests
-
-
-def load_data(filepath):
-    get_file = requests.get(filepath)
-    return get_file.json()
-
-
-def pretty_print_json(json_file):
-    return print(json.dumps(json_file, skipkeys=True, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
-
-
-
-if __name__ == '__main__':
-    file_input = input()
-    load_file = load_data(file_input)
-    print_file = pretty_print_json(load_file)
-
-
+#!/usr/bin/python3import jsonimport requestsimport sysimport osdef load_data(file_patch):    if os.path.isfile(file_patch) == True:        get_file = open(file_patch, 'r')    else:        get_file = requests.get(file_patch)    return get_file.json()def pretty_print_json(json_file):    return json.dumps(json_file,                      skipkeys=True,                      ensure_ascii=False,                      sort_keys=True,                      indent=2,                      separators=(',', ': '))if __name__ == '__main__':    if len(sys.argv) > 1:        file_patch = sys.argv[1]    else:        file_patch = input(print("Enter file patch"))    load_file = load_data(file_patch)    print(pretty_print_json(load_file))
